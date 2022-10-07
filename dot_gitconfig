@@ -1,0 +1,26 @@
+[user]
+  name = Ben Draut
+  email = drautb@gmail.com
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+  pager = less
+[push]
+  default = simple
+[url "https://"]
+  insteadOf = git://
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  process = git-lfs filter-process
+[gui]
+  recentrepo = /Users/drautb/GitHub/fs-eng/paas-sps-binding-sets
+[log-times]
+  defaults = --two-initials --abbrev=8
+[alias]
+  cake = log --date=format:'%d %b %Y' --diff-filter=A --name-only --pretty='%n%C(yellow bold)🎂️ %ad%Creset by (%C(blue bold)%h%Creset)'
+[color "diff"]
+  whitespace = red reverse
+[pull]
+  ff = only

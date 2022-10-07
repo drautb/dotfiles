@@ -1,0 +1,27 @@
+*.iml
+.idea
+*~
+target
+infer-out
+.DS_Store
+*#
+*.sublime-workspace
+*.sublime-project
+.#*
+*.o
+cscope.*
+.pytest_cache
+__pycache__
+.mypy_cache
+*.vscode
+*.code-workspace
+
+# Spring tools extension (VSCode)
+.sts4-cache
+
+# More VSCode Java Stuff
+.project
+.classpath
+.settings
+.factorypath
+
