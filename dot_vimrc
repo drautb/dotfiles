@@ -1,0 +1,78 @@
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/target/*
+set wildignore+=**/.git/*
+
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'mhinz/vim-signify'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'lifepillar/vim-solarized8'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'habamax/vim-godot'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'cespare/vim-toml'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+call plug#end()
+
+inoremap jk <ESC>
+
+let mapleader = " "
+
+map - <C-W>-
+map + <C-W>+
+
+map <leader>h :wincmd h<CR>
+map <leader>j :wincmd j<CR>
+map <leader>k :wincmd k<CR>
+map <leader>l :wincmd l<CR>
+
+nnoremap <leader>pt :NERDTreeToggle<CR>
+nnoremap <silent> <leader>pv :NERDTreeFind<CR>
+
+syntax on 
+syntax enable
+set background=dark
+colorscheme solarized8
+
+set nocompatible
+set number 
+set noswapfile
+set hlsearch 
+set incsearch
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set pastetoggle=<F3>
+
+if executable('rg')
+  let g:ctrlp_user_command = 'rg --files %s'
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_switch_buffer = 'et'
+endif
+
+let g:ackprg = 'rg --vimgrep --no-heading'
+
+" Recommended settings for syntastic.
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:godot_executable = '/Applications/Godot.app'

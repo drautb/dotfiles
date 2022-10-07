@@ -1,0 +1,240 @@
+export ZSH=/Users/drautb/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="drautb"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+# User configuration
+export PATH="/Users/drautb/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/electriccloud/electriccommander/bin:/Library/Frameworks/Mono.framework/Versions/Current/bin/:/opt/dafny"
+export CDPATH=".:/Users/drautb/BitBucket/koohoots_dev:/Users/drautb/GitHub/drautb:/Users/drautb/Dropbox:/Users/drautb/GitHub/fs-eng:/Users/drautb/GitHub/greebles"
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+ZSH_DISABLE_COMPFIX=true
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#cb4b16,bold,underline"
+source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH="$PATH:/usr/local/go/bin:/$HOME/go/bin"
+export PATH="/usr/local/sbin:$HOME/.cargo/bin:$PATH"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export COMMANDER_SERVER="build.fsglobal.net"
+export EDITOR=vim
+
+export FH5_ID="074150922133"
+export FH3_ID="643055571372"
+export FH1_ID="914248642252"
+export FH011_ID="269265686545"
+
+mkdir -p "$HOME/go"
+export GOPATH="$HOME/go"
+export FS_ONEDRIVE="$HOME/OneDrive - Church of Jesus Christ"
+export PAGER=
+
+alias gitnah="git reset --hard HEAD"
+alias gs="git status"
+alias xracket="racket -il xrepl"
+alias cat="bat"
+alias diff="colordiff"
+alias markdown="kramdown"
+alias nproc="sysctl -n hw.ncpu"
+alias fs-login="mvn paas-portal:login paas-portal:generate-env paas-portal:generate-profile"
+alias tw="task +fs"
+alias tg="task project:greebles"
+alias tb="task project:basement"
+alias pgcli="PAGER=cat pgcli"
+alias mci="MAVEN_OPTS=\"-XX:+TieredCompilation -XX:TieredStopAtLevel=1\" mvn clean install -T 1C"
+alias mci-fast="mci -DskipTests=true -Dmaven.test.skip -Denunciate.skip -T 1C"
+alias mci-no-enun="mci -Denunciate.skip -T 1C"
+alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+alias c="pbcopy"
+alias p="pbpaste"
+alias ttyplot="TERM=vt100 ttyplot"
+
+gcorb() {
+  git checkout -b $1 origin/$1
+}
+
+gpcb() {
+  git push -u origin $(gb | grep "*" | awk '{print $2}') $@
+}
+
+describe-stack() {
+  aws cloudformation describe-stacks --stack-name $1
+}
+
+get-stack-elb() {
+  aws cloudformation describe-stack-resources --stack-name $1 --logical-resource-id AWSEBLoadBalancer
+}
+
+describe-stack-events() {
+  aws cloudformation describe-stack-events --stack-name $1
+}
+
+delete-stack() {
+  aws cloudformation delete-stack --stack-name $1
+}
+
+decode-auth-failure() {
+  aws sts decode-authorization-message --encoded-message "$1" --profile "$2" | jq -r '.DecodedMessage' | jq
+}
+
+get-image-stuff() {
+  image="$1"
+  curl -H "Accept: application/json" "http://dexter.records.service.integ.us-east-1.dev.fslocal.org/image/$image/image-stuff" > "$image.json"
+}
+
+get-record-stuff() {
+  image="$1"
+  curl -H "Accept: application/json" "http://dexter.records.service.integ.us-east-1.dev.fslocal.org/image/$image/record-stuff" > "$image.json"
+}
+
+get-records() {
+  image="$1"
+  curl -H "Accept: application/json" "http://dexter.records.service.integ.us-east-1.dev.fslocal.org/image/$image/records" > "$image.json"
+}
+
+minify-json() {
+  file="$1"
+  tmpfile="$(mktemp)"
+  cp "$file" "$tmpfile"
+  jq -c . < "$tmpfile" > "$file"
+  rm "$tmpfile"
+}
+
+fillzeros() {
+  if (( ${#} == 0 )) ; then
+    cnt=1
+    while read -r line ; do
+      x="$(echo "$line" | awk '{ print $1 }')"
+      while [ "$cnt" -ne "$x" ]; do
+        echo "$cnt 0"
+        cnt=$(echo "$cnt + 1" | bc)
+      done
+      echo "$line"
+      cnt=$(echo "$cnt + 1" | bc)
+    done
+  else
+    echo "${@}" | fillzeros
+  fi
+}
+
+function add-newline-at-eof() {
+  [ -n "$(tail -c1 $1)" ] && printf '\n' >> "$1"
+}
+
+# https://zenbro.github.io/2015/07/23/show-exit-code-of-last-command-in-zsh.html
+function check_last_exit_code() {
+  local LAST_EXIT_CODE=$?
+  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+    local EXIT_CODE_PROMPT=' '
+    EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
+    EXIT_CODE_PROMPT+="%{$fg_bold[red]%}$LAST_EXIT_CODE%{$reset_color%}"
+    EXIT_CODE_PROMPT+="%{$fg[red]%}-%{$reset_color%}"
+    echo "$EXIT_CODE_PROMPT"
+  fi
+}
+
+setopt PROMPT_SUBST
+RPROMPT='$(check_last_exit_code)'" $RPROMPT"
+
+# source /usr/local/share/zsh/site-functions/_aws
+
+# OCaml
+#. /Users/drautb/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Rust
+source ~/.cargo/env
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home"
+
+# added by travis gem
+[ -f /Users/drautb/.travis/travis.sh ] && source /Users/drautb/.travis/travis.sh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
