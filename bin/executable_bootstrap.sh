@@ -27,8 +27,8 @@ if [ "$OS" == "Linux" ]; then
   chsh -s "$(command -v zsh)"
 fi
 
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Install oh-my-zsh in unattended mode
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 if [ -e ~/.zshrc.pre-oh-my-zsh ]; then
 	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 fi
