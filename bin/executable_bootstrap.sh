@@ -42,6 +42,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Fix remote URL for dotfiles
-~/bin/chezmoi cd && git remote set-url origin git@github.com:drautb/dotfiles.git && cd - || exit
+~/bin/chezmoi cd 
+git remote set-url origin git@github.com:drautb/dotfiles.git
+cd - || exit
+
 
 
