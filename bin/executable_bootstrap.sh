@@ -25,13 +25,13 @@ if command -v apt; then
     wget
 fi
 
-if [ "$OS" == "Linux" ]; then
+if [[ "$OS" == "Linux" && ! "$SHELL" =~ "zsh" ]]; then
   chsh -s "$(command -v zsh)"
 fi
 
 # Install oh-my-zsh in unattended mode
 set +x
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+ZSH= sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 set -x
 
 if [ -e ~/.zshrc.pre-oh-my-zsh ]; then
