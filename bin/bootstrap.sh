@@ -20,7 +20,8 @@ if command -v apt; then
     vim \
     git \
     curl \
-    wget
+    wget \
+    bat
 fi
 
 if [ "$OS" == "Linux" ]; then
