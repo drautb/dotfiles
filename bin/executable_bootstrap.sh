@@ -8,7 +8,9 @@ OS="$(uname -s)"
 
 # Install homebrew if on a mac
 if [ "$OS" == "Darwin" ]; then
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  set +x
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  set -x
 
 	# brew install ....
 fi
@@ -28,7 +30,10 @@ if [ "$OS" == "Linux" ]; then
 fi
 
 # Install oh-my-zsh in unattended mode
+set +x
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+set -x
+
 if [ -e ~/.zshrc.pre-oh-my-zsh ]; then
 	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 fi
