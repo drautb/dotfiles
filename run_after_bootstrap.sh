@@ -1,33 +1,8 @@
 #!/usr/bin/env bash
 
-# Script to bootstrap a new machine.
+# Universal setup, runs after platform-specific setup.
 
 set -x
-
-OS="$(uname -s)"
-
-# Install homebrew if on a mac
-if [ "$OS" == "Darwin" ]; then
-  set +x
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  set -x
-
-	# brew install ....
-fi
-
-if command -v apt; then
-  sudo apt install -y zsh \
-    tmux \
-    htop \
-    vim \
-    git \
-    curl \
-    wget
-fi
-
-if [[ "$OS" == "Linux" && ! "$SHELL" =~ "zsh" ]]; then
-  chsh -s "$(command -v zsh)"
-fi
 
 # Install oh-my-zsh in unattended mode
 set +x

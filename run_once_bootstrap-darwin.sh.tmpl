@@ -1,0 +1,13 @@
+{{ if eq .chezmoi.os "darwin" -}}
+
+#!/usr/bin/env bash
+
+# macOS specific setup
+
+set +x
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+set -x
+
+# brew install ...
+
+{{ end -}}
