@@ -6,6 +6,9 @@ set -x
 
 OS="$(uname -s)"
 
+# Fix remote URL for dotfiles
+chezmoi cd && git remote set-url origin git@github.com:drautb/dotfiles.git && cd - || exit
+
 # Install homebrew if on a mac
 if [ "$OS" == "Darwin" ]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -20,8 +23,7 @@ if command -v apt; then
     vim \
     git \
     curl \
-    wget \
-    bat
+    wget
 fi
 
 if [ "$OS" == "Linux" ]; then
