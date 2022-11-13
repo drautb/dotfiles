@@ -44,6 +44,7 @@ alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
 alias c="pbcopy"
 alias p="pbpaste"
 alias ttyplot="TERM=vt100 ttyplot"
+alias tmux="tmux -2"
 
 gcorb() {
   git checkout -b $1 origin/$1

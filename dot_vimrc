@@ -55,6 +55,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set pastetoggle=<F3>
+set term=screen-256color
 
 if executable('rg')
   let g:ctrlp_user_command = 'rg --files %s'
