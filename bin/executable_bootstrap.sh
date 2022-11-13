@@ -14,7 +14,7 @@ if [ "$OS" == "Darwin" ]; then
 fi
 
 if command -v apt; then
-  apt install -y zsh \
+  sudo apt install -y zsh \
     tmux \
     htop \
     vim \
