@@ -6,9 +6,6 @@ set -x
 
 OS="$(uname -s)"
 
-# Fix remote URL for dotfiles
-~/bin/chezmoi cd && git remote set-url origin git@github.com:drautb/dotfiles.git && cd - || exit
-
 # Install homebrew if on a mac
 if [ "$OS" == "Darwin" ]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -43,4 +40,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Fix remote URL for dotfiles
+~/bin/chezmoi cd && git remote set-url origin git@github.com:drautb/dotfiles.git && cd - || exit
+
 
