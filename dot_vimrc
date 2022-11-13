@@ -23,6 +23,7 @@ Plug 'majutsushi/tagbar'
 Plug 'cespare/vim-toml'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 inoremap jk <ESC>
