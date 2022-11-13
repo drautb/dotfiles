@@ -2,7 +2,7 @@
 
 # Universal setup, runs after platform-specific setup.
 
-set -x
+set -eux
 
 # Install oh-my-zsh in unattended mode
 set +x
