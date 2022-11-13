@@ -7,7 +7,7 @@ set -x
 OS="$(uname -s)"
 
 # Fix remote URL for dotfiles
-chezmoi cd && git remote set-url origin git@github.com:drautb/dotfiles.git && cd - || exit
+~/bin/chezmoi cd && git remote set-url origin git@github.com:drautb/dotfiles.git && cd - || exit
 
 # Install homebrew if on a mac
 if [ "$OS" == "Darwin" ]; then
