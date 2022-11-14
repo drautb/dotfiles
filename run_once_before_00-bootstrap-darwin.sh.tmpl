@@ -6,9 +6,12 @@
 
 set -eux
 
-set +x
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-set -x
+if ! command -v brew; then
+  echo "Installing homebrew..."
+  set +x
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  set -x
+fi
 
 function brew_install {
   if ! command -v $1; then
