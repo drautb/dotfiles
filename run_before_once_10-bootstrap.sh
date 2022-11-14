@@ -35,3 +35,17 @@ pushd "$(~/bin/chezmoi source-path)" || exit
 git remote set-url origin git@github.com:drautb/dotfiles.git
 popd || exit
 
+# Install Rust + utilities
+if ! command -v cargo; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
+function cargo_install {
+  if ! command -v $1; then
+    cargo install $1
+  fi
+}
+
+cargo_install atuin # Shared shell history
+cargo_install bat # cat replacement
+

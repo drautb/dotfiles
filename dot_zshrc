@@ -33,7 +33,7 @@ export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOM
 alias gitnah="git reset --hard HEAD"
 alias gs="git status"
 alias xracket="racket -il xrepl"
-alias cat="batcat"
+alias cat="bat"
 alias diff="colordiff"
 alias nproc="sysctl -n hw.ncpu"
 alias pgcli="PAGER=cat pgcli"
