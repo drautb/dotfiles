@@ -1,5 +1,8 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $database := promptStringOnce . "database" "KeepassXC Database" -}}
 
 [data]
   email = {{ $email | quote }}
 
+[keepassxc]
+  database = {{ $database | quote }}

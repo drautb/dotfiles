@@ -48,4 +48,3 @@ function cargo_install {
 
 cargo_install atuin # Shared shell history
 cargo_install bat # cat replacement
-

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Login to atuin for syncing shell history
+
+set -eu
+
+echo "Atuin login..."
+atuin login -u {{ (keepassxc "atuin").UserName }} -p {{ (keepassxc "atuin").Password }} -k {{ keepassxcAttribute "atuin" "key" }}
