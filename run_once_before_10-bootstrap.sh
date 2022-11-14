@@ -48,7 +48,7 @@ function cargo_install {
 
 cargo_install atuin # Shared shell history
 cargo_install bat # cat replacement
-cargo_install dust # du replacement
+cargo_install du-dust # du replacement
 cargo_install ripgrep
 cargo_install tokei
 cargo_install bandwhich
