@@ -87,7 +87,7 @@ fi
 [ -e ~/.cargo/env ] && source ~/.cargo/env
 
 # Atuin (shared shell history)
-if command -v atuin > /dev/null && [ -z "$ATUIN_SESSION" ]; then
+if command -v atuin > /dev/null; then
   eval "$(atuin init zsh)"
 fi
 
