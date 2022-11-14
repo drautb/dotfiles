@@ -35,16 +35,21 @@ alias gs="git status"
 alias xracket="racket -il xrepl"
 alias cat="bat"
 alias diff="colordiff"
-alias nproc="sysctl -n hw.ncpu"
 alias pgcli="PAGER=cat pgcli"
 alias mci="MAVEN_OPTS=\"-XX:+TieredCompilation -XX:TieredStopAtLevel=1\" mvn clean install -T 1C"
 alias mci-fast="mci -DskipTests=true -Dmaven.test.skip -Denunciate.skip -T 1C"
 alias mci-no-enun="mci -Denunciate.skip -T 1C"
-alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
-alias c="pbcopy"
-alias p="pbpaste"
 alias ttyplot="TERM=vt100 ttyplot"
+
 alias tmux="tmux -2"
+alias tat0="tmux attach -t 0"
+
+if [ $(uname -s) = "Darwin" ]; then
+  alias nproc="sysctl -n hw.ncpu"
+  alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+  alias c="pbcopy"
+  alias p="pbpaste"
+fi
 
 gcorb() {
   git checkout -b $1 origin/$1
@@ -70,7 +75,7 @@ setopt PROMPT_SUBST
 RPROMPT='$(check_last_exit_code)'" $RPROMPT"
 
 # NVM
-if [ -d "$HOME/.nvm" ]; then
+if [ -d "$HOME/.nvm" ] && [ -z "$NVM_DIR" ]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -79,12 +84,16 @@ fi
 # Rust
 [ -e ~/.cargo/env ] && source ~/.cargo/env
 
+# Atuin (shared shell history)
+if command -v atuin > /dev/null && [ -z "$ATUIN_SESSION" ]; then
+  eval "$(atuin init zsh)"
+fi
+
 # Pyenv
-if [ -d "$HOME/.pyenv" ]; then
+if [ -d "$HOME/.pyenv" ] && [ -z "$PYENV_ROOT" ]; then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
-

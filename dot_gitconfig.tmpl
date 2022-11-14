@@ -1,6 +1,6 @@
 [user]
   name = Ben Draut
-  email = drautb@gmail.com
+  email = {{ .email | quote }} 
 [core]
   editor = vim
   excludesfile = ~/.gitignore
