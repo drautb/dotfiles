@@ -1,24 +1,47 @@
 [user]
   name = Ben Draut
   email = {{ .email | quote }} 
+
 [core]
   editor = vim
   excludesfile = ~/.gitignore
   pager = less
+
 [push]
   default = simple
+
 [url "https://"]
   insteadOf = git://
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
+
 [log-times]
   defaults = --two-initials --abbrev=8
+
 [alias]
   cake = log --date=format:'%d %b %Y' --diff-filter=A --name-only --pretty='%n%C(yellow bold)🎂️ %ad%Creset by (%C(blue bold)%h%Creset)'
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C(reset) %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+
 [color "diff"]
   whitespace = red reverse
+
 [pull]
   ff = only
+  rebase = true
+
+[rerere]
+  enabled = true
+
+[commit]
+  template = ~/.git-commit-template.txt
+  cleanup = strip
+
+[amazon]
+  append-cr-url = true
+  pull-request-by-default = true

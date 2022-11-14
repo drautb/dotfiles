@@ -44,6 +44,8 @@ alias ttyplot="TERM=vt100 ttyplot"
 alias tmux="tmux -2"
 alias tat0="tmux attach -t 0"
 
+alias bb="brazil-build"
+
 if [ $(uname -s) = "Darwin" ]; then
   alias nproc="sysctl -n hw.ncpu"
   alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
