@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if eq .osid "darwin" -}}
 
 #!/usr/bin/env bash
 
@@ -10,6 +10,19 @@ set +x
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 set -x
 
-# brew install ...
+function brew_install {
+  if ! command -v $1; then
+    brew install $1
+  fi
+}
+
+brew_install pass
+brew_install git
+brew_install htop
+brew_install imagemagick
+brew_install jq
+brew_install pyenv
+brew_install tmux
+brew_install tree
 
 {{ end -}}

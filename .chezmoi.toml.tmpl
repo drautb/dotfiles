@@ -1,8 +1,10 @@
-{{- $email := promptStringOnce . "email" "Email address" -}}
-{{- $database := promptStringOnce . "database" "KeepassXC Database" -}}
+{{ $email := promptStringOnce . "email" "Email address" -}}
+
+{{$osid := .chezmoi.os -}}
+{{if hasKey .chezmoi.osRelease "id" -}}
+{{  $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{end -}}
 
 [data]
   email = {{ $email | quote }}
-
-[keepassxc]
-  database = {{ $database | quote }}
+  osid = {{ $osid | quote }}

@@ -5,4 +5,4 @@
 set -eu
 
 echo "Atuin login..."
-atuin login -u {{ (keepassxc "atuin").UserName }} -p {{ (keepassxc "atuin").Password }} -k {{ keepassxcAttribute "atuin" "key" }}
+atuin login -u {{ pass "atuin/username" }} -p {{ pass "atuin/password" }} -k {{ pass "atuin/key" }}

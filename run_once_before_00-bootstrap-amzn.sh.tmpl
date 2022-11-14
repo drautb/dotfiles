@@ -1,21 +1,21 @@
-{{ if eq .osid "linux-debian" -}}
+{{ if eq .osid "linux-amzn" -}}
 
 #!/usr/bin/env bash
 
-# Debian-specific setup
+# Amazon Linux specific setup
 
 set -eux
 
-sudo apt update
+sudo yum update
 
-sudo apt install -y zsh \
+sudo yum install -y zsh \
   tmux \
   htop \
   vim \
   git \
   curl \
   wget \
-  pass
+  keepassxc
 
 if [[ ! "$SHELL" =~ "zsh" ]]; then
   chsh -s "$(command -v zsh)"
