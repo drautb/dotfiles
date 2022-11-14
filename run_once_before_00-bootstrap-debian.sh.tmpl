@@ -6,13 +6,18 @@
 
 set -eux
 
+sudo add-apt-repository ppa:phoerious/keepassxc
+
+sudo apt update
+
 sudo apt install -y zsh \
   tmux \
   htop \
   vim \
   git \
   curl \
-  wget
+  wget \
+  keepassxc
 
 if [[ ! "$SHELL" =~ "zsh" ]]; then
   chsh -s "$(command -v zsh)"
