@@ -35,22 +35,32 @@ pushd "$(~/bin/chezmoi source-path)" || exit
 git remote set-url origin git@github.com:drautb/dotfiles.git
 popd || exit
 
-# Install Rust + utilities
-if ! command -v cargo; then
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-fi
-
+# Install Rust + utilities if there is sufficient memory
 function cargo_install {
-  # TODO: Prompt for each one so I can skip some of them on smaller devices (Raspberry Pis)
-  if ! command -v $1; then
-    cargo install $1
+  pkg="$1"
+  desc="$2"
+  cmd="${3:-$pkg}"
+  if ! command -v "$cmd"; then
+    read -r -p "Install '$pkg' ($cmd - $desc)? "
+    echo
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+      cargo install "$pkg"
+    fi
   fi
 }
 
-cargo_install atuin # Shared shell history
-cargo_install bat # cat replacement
-cargo_install du-dust # du replacement
-cargo_install ripgrep
-cargo_install tokei
-cargo_install bandwhich
-cargo_install grex
+if [ "$(uname -s)" == "Linux" ] && [ "$(awk '/^MemTotal:/{print $2}' /proc/meminfo)" -lt "4000000" ]; then
+  echo "Not enough memory to install rust, atuin and other rust utilities will not be available"
+else
+  if ! command -v cargo; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  fi
+
+  cargo_install atuin "Shared shell history"
+  cargo_install bat "cat replacement with syntax highlighting and git integration"
+  cargo_install du-dust "du replacement" dust
+  cargo_install ripgrep "Faster grep" rg
+  cargo_install tokei "stats about source code"
+  cargo_install bandwhich "Determine which processes are hogging bandwidth"
+  cargo_install grex "Generate a regular expression from target examples"
+fi
