@@ -1,5 +1,9 @@
+{{- $font_size := 13.0 -}}
+{{- if eq .osid "darwin" -}}
+  {{- $font_size = 15.0 -}}
+{{- end -}}
 font:
-  size: 13.0
+  size: {{ $font_size }} 
 
 key_bindings:
   - { key: Right, mods: Alt, chars: "\x1BF" }
