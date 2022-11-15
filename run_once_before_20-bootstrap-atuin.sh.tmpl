@@ -4,8 +4,11 @@
 
 set -eu
 
-echo "Atuin login..."
-atuin login -u {{ pass "atuin/username" }} -p {{ pass "atuin/password" }} -k {{ pass "atuin/key" }}
-
-atuin import auto
-atuin sync
+if command -v atuin; then
+  echo "Atuin login..."
+  atuin login -u {{ pass "atuin/username" }} -p {{ pass "atuin/password" }} -k {{ pass "atuin/key" }}
+  atuin import auto
+  atuin sync
+else
+  echo "atuin command not found, shell history will not be shared"
+fi
