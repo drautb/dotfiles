@@ -41,6 +41,7 @@ if ! command -v cargo; then
 fi
 
 function cargo_install {
+  # TODO: Prompt for each one so I can skip some of them on smaller devices (Raspberry Pis)
   if ! command -v $1; then
     cargo install $1
   fi
