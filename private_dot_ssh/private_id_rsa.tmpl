@@ -1,1 +1,3 @@
+{{- if not (eq .osid "linux-amzn") -}}
 {{ passRaw "ssh_key" }}
+{{- end --}}
