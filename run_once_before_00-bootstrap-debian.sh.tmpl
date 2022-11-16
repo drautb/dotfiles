@@ -1,4 +1,6 @@
-{{ if or (eq .osid "linux-debian") (eq .osid "linux-raspbian") -}}
+{{ if or (eq .osid "linux-debian")
+         (eq .osid "linux-ubuntu")
+         (eq .osid "linux-raspbian") -}}
 
 #!/usr/bin/env bash
 
