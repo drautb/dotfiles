@@ -49,7 +49,7 @@ function cargo_install {
   fi
 }
 
-if [ "$(uname -s)" == "Linux" ] && [ "$(awk '/^MemTotal:/{print $2}' /proc/meminfo)" -lt "4000000" ]; then
+if [ "$(uname -s)" == "Linux" ] && [ "$(awk '/^MemTotal:/{print $2}' /proc/meminfo)" -lt "3500000" ]; then
   echo "Not enough memory to install rust, atuin and other rust utilities will not be available"
 else
   if ! command -v cargo; then
