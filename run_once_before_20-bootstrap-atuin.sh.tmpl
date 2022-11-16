@@ -1,3 +1,5 @@
+{{ if not (.eq osid "linux-amzn" -}}
+
 #!/usr/bin/env bash
 
 # Login to atuin for syncing shell history
@@ -12,3 +14,6 @@ if command -v atuin; then
 else
   echo "atuin command not found, shell history will not be shared"
 fi
+
+{{ end -}}
+
