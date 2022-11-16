@@ -63,4 +63,5 @@ else
   cargo_install tokei "stats about source code"
   cargo_install bandwhich "Determine which processes are hogging bandwidth"
   cargo_install grex "Generate a regular expression from target examples"
+  cargo_install fd-find "find replacement" fd
 fi
