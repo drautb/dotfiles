@@ -25,6 +25,7 @@ export EDITOR=vim
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.toolbox/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles"
