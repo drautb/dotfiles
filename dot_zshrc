@@ -33,6 +33,7 @@ export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOM
 # Example aliases
 alias gitnah="git reset --hard HEAD"
 alias gs="git status"
+
 alias xracket="racket -il xrepl"
 alias cat="bat"
 alias diff="colordiff"
@@ -53,6 +54,12 @@ if [ $(uname -s) = "Darwin" ]; then
   alias c="pbcopy"
   alias p="pbpaste"
 fi
+
+unalias gcm
+gcm() {
+  default_branch="$(git symbolic-ref --short refs/remotes/origin/HEAD)"
+  gco $(basename $default_branch)
+}
 
 gcorb() {
   git checkout -b $1 origin/$1
