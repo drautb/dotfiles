@@ -47,6 +47,8 @@ alias ttyplot="TERM=vt100 ttyplot"
 alias tmux="tmux -2"
 alias tat0="tmux attach -t 0"
 
+alias t="task"
+
 alias bb="brazil-build"
 
 if [ $(uname -s) = "Darwin" ]; then
