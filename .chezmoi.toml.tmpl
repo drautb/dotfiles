@@ -1,4 +1,5 @@
 {{ $email := promptStringOnce . "email" "Email address" -}}
+{{ $google_drive := promptStringOnce . "google_drive" "Path to Google Drive" -}}
 
 {{$osid := .chezmoi.os -}}
 {{if hasKey .chezmoi.osRelease "id" -}}
@@ -8,3 +9,4 @@
 [data]
   email = {{ $email | quote }}
   osid = {{ $osid | quote }}
+  google_drive = {{ $google_drive | quote }}
