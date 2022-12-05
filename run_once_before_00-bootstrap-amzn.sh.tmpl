@@ -17,7 +17,9 @@ sudo yum install -y zsh \
   gcc \
   kernel-devel \
   make \
-  ncurses-devel
+  ncurses-devel \
+  libuuid-devel \
+  gnutls-devel
 
 if [[ ! "$SHELL" =~ "zsh" ]]; then
   chsh -s "$(command -v zsh)"

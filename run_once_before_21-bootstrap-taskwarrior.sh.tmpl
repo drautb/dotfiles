@@ -8,7 +8,7 @@ curl -LOk https://github.com/GothenburgBitFactory/taskwarrior/releases/download/
 tar -zxf task-2.6.2.tar.gz
 cd task-2.6.2
 cmake -DCMAKE_BUILD_TYPE=release .
-make
+make -j "$(nproc)"
 sudo make install
 
 {{ end -}}
