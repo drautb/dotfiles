@@ -25,3 +25,5 @@ __pycache__
 .settings
 .factorypath
 
+# AWS
+.rde
