@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Installing vim plugins..."
+echo "Installing and Updating vim plugins..."
 vim -c "PlugInstall | q | q"
+vim -c "PlugUpdate | q | q"
