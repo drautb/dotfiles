@@ -24,7 +24,7 @@ Plug 'cespare/vim-toml'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'axelf4/vim-strip-trailing-whitespace'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 inoremap jk <ESC>
