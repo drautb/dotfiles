@@ -35,7 +35,7 @@ if [ -d "/apollo/env/" ]; then
   export PATH="$PATH:/apollo/env/NRE-Desktop/bin"
 fi
 
-export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles"
+export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
 # Example aliases
 alias gitnah="git reset --hard HEAD"
