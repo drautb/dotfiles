@@ -51,7 +51,7 @@ alias mci-no-enun="mci -Denunciate.skip -T 1C"
 alias ttyplot="TERM=vt100 ttyplot"
 
 alias tmux="tmux -2"
-alias tat0="tmux attach -t 0"
+alias tat="tmux attach -t"
 
 alias t="task"
 
