@@ -21,6 +21,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#cb4b16,bold,underline"
 source $ZSH/oh-my-zsh.sh
 ZSH_HIGHLIGHT_STYLES[comment]="fg=#007f00"
 
+# Report CPU time for commands taking longer than 10 seconds
+REPORTTIME=10
+
 # User configuration
 export EDITOR=vim
 
