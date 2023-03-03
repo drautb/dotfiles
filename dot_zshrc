@@ -38,6 +38,10 @@ if [ -d "/apollo/env/" ]; then
   export PATH="$PATH:/apollo/env/NRE-Desktop/bin"
 fi
 
+if [ -d "/opt/homebrew/bin/" ]; then
+  export PATH="$PATH:/opt/homebrew/bin"
+fi
+
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
 # Example aliases
