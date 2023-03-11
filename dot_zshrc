@@ -42,6 +42,10 @@ if [ -d "/opt/homebrew/bin/" ]; then
   export PATH="$PATH:/opt/homebrew/bin"
 fi
 
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$PATH:$HOME/.local/bin"
+fi
+
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
 # Example aliases
