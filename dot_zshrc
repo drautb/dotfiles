@@ -35,6 +35,7 @@ export PATH="$HOME/bin:$PATH"
 
 if [ -d "/apollo/env/" ]; then
   export PATH="$PATH:/apollo/env/envImprovement/bin"
+  export PATH="$PATH:/apollo/env/ApolloCommandLine/bin"
   export PATH="$PATH:/apollo/env/NRE-Desktop/bin"
 fi
 
