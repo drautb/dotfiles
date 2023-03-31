@@ -49,6 +49,8 @@ fi
 
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
+export AWS_PAGER=""
+
 # Example aliases
 alias gitnah="git reset --hard HEAD"
 alias gs="git status"
