@@ -47,6 +47,10 @@ if [ -d "$HOME/.local/bin" ]; then
   export PATH="$PATH:$HOME/.local/bin"
 fi
 
+if [ -d "/usr/local/go/bin" ]; then
+  export PATH="$PATH:/usr/local/go/bin"
+fi
+
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
 export AWS_PAGER=""
@@ -73,6 +77,7 @@ alias t="task"
 alias bb=brazil-build
 alias bba='brazil-build apollo-pkg'
 alias bre='brazil-runtime-exec'
+alias bte='brazil-test-exec'
 alias brc='brazil-recursive-cmd'
 alias bws='brazil ws'
 alias bwsuse='bws use -p'
