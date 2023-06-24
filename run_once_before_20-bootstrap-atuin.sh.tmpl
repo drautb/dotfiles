@@ -8,7 +8,7 @@ set -eu
 
 if command -v atuin; then
   echo "Atuin login..."
-  atuin login -u {{ pass "atuin/username" }} -p {{ pass "atuin/password" }} -k {{ pass "atuin/key" }}
+  atuin login -u {{ (keepassxc "Atuin").UserName }} -p {{ (keepassxc "Atuin").Password }} -k {{ keepassxcAttribute "Atuin" "Key" }}
   atuin import auto
   atuin sync
 else
