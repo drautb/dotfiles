@@ -6,10 +6,12 @@
 {{  $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{end -}}
 
+{{$keepassdb := printf "%s/drautb.kdbx" $google_drive}}
+
 [data]
   email = {{ $email | quote }}
   osid = {{ $osid | quote }}
   google_drive = {{ $google_drive | quote }}
 
 [keepassxc]
-  database = {{ $google_drive }}/drautb.kdbx
+  database = {{ $keepassdb | quote }}
