@@ -51,6 +51,10 @@ if [ -d "/usr/local/go/bin" ]; then
   export PATH="$PATH:/usr/local/go/bin"
 fi
 
+if [ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ]; then
+  export PATH="$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+fi
+
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
 export AWS_PAGER=""
