@@ -108,7 +108,8 @@ alias rshow="rde stack show"
 
 if [ $(uname -s) = "Darwin" ]; then
   alias nproc="sysctl -n hw.ncpu"
-  alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+  alias godot-3.5.2="/Applications/Godot v3.5.2.app/Contents/MacOS/Godot"
+  alias godot-4.0.3="/Applications/Godot v4.0.3.app/Contents/MacOS/Godot"
   alias c="pbcopy"
   alias p="pbpaste"
 fi
