@@ -59,6 +59,10 @@ if [ -d "/Applications/KeePassXC.app/Contents/MacOS" ]; then
   export PATH="$PATH:/Applications/KeePassXC.app/Contents/MacOS"
 fi
 
+if [ -d "$HOME/Library/Application Support/itch/apps/" ]; then
+  export PATH="$PATH:$HOME/Library/Application Support/itch/apps/butler"
+fi
+
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
 export AWS_PAGER=""
