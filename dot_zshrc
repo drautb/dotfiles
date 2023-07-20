@@ -85,6 +85,8 @@ alias tmux="tmux -2"
 alias tat="tmux attach -t"
 
 alias t="task"
+alias lzd="lazydocker"
+alias lzg="lazygit"
 
 # brazil aliases
 alias bb=brazil-build
