@@ -24,6 +24,10 @@ ZSH_HIGHLIGHT_STYLES[comment]="fg=#007f00"
 # Report CPU time for commands taking longer than 10 seconds
 REPORTTIME=10
 
+# autoload personal functions
+fpath=(~/.zsh_functions $fpath)
+autoload -U $fpath[1]/*(.:t)
+
 # User configuration
 export EDITOR=vim
 
@@ -67,6 +71,9 @@ fi
 export CDPATH=".:$HOME:$HOME/GitHub/drautb:$HOME/Google Drive:$HOME/GitHub/:$HOME/GitHub/greebles:$HOME/workplace"
 
 export AWS_PAGER=""
+
+unalias gcm
+unalias gsr
 
 # Example aliases
 alias gitnah="git reset --hard HEAD"
@@ -121,7 +128,6 @@ if [ $(uname -s) = "Darwin" ]; then
   alias p="pbpaste"
 fi
 
-unalias gcm
 gcm() {
   default_branch="$(git symbolic-ref --short refs/remotes/origin/HEAD)"
   gco $(basename $default_branch)
