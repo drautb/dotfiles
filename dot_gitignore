@@ -31,3 +31,6 @@ build
 
 hs_err_pid*.log
 .attach_pid*
+
+# Godot 4
+.godot
