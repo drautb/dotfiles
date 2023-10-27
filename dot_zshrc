@@ -141,6 +141,10 @@ gpcb() {
   git push -u origin $(gb | grep "*" | awk '{print $2}') $@
 }
 
+function mcurl() {
+  curl "$@" -L --cookie ~/.midway/cookie --cookie-jar ~/.midway/cookie
+}
+
 # https://zenbro.github.io/2015/07/23/show-exit-code-of-last-command-in-zsh.html
 function check_last_exit_code() {
   local LAST_EXIT_CODE=$?
