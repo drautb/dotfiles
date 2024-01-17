@@ -30,6 +30,12 @@ fi
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Install tmux plugin manager
+TMUX_PLUGIN_DIR="$HOME/.tmux/plugins"
+if [ ! -d "$TMUX_PLUGIN_DIR/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$TMUX_PLUGIN_DIR/tpm"
+fi
+
 # Fix remote URL for dotfiles
 pushd "$(~/bin/chezmoi source-path)" || exit
 git remote set-url origin git@github.com:drautb/dotfiles.git
