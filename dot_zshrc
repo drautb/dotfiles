@@ -30,6 +30,7 @@ autoload -U $fpath[1]/*(.:t)
 
 # User configuration
 export EDITOR=vim
+export DELTA_PAGER="less -R"
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
