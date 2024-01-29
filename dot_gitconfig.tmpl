@@ -5,7 +5,20 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore
-  pager = less
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true   # Use n and N to move between diff sections
+  light = false
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
 
 [init]
   defaultBranch = main
@@ -29,7 +42,6 @@
   cake = log --date=format:'%d %b %Y' --diff-filter=A --name-only --pretty='%n%C(yellow bold)🎂️ %ad%Creset by (%C(blue bold)%h%Creset)'
   dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C(reset) %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-
 
 [color "diff"]
   whitespace = red reverse
