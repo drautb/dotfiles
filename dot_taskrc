@@ -1,0 +1,18 @@
+# Files
+data.location=~/.task
+
+include solarized-dark-256.theme
+
+context.work.read=project:Work
+context.work.write=project:Work
+context.home.read=project.not:Work
+context.cars.read=project:Cars
+context.cars.write=project:Cars
+
+taskd.server=app.wingtask.com:53589
+taskd.key=\/Users\/drautb\/.wingtask_certs\/drautb@gmail.com.key.pem
+taskd.ca=\/Users\/drautb\/.wingtask_certs\/letsencrypt_root_cert.pem
+taskd.certificate=\/Users\/drautb\/.wingtask_certs\/drautb@gmail.com.cert.pem
+taskd.credentials=WingTask\/drautb@gmail.com\/7fe5564f-9076-4b7b-88ff-e899d8029d61
+news.version=2.6.0
+context=home
