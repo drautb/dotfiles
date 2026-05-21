@@ -28,6 +28,7 @@ __pycache__
 # AWS
 .rde
 build
+build.log
 
 hs_err_pid*.log
 .attach_pid*
