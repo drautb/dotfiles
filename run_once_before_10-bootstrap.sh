@@ -37,7 +37,7 @@ if [ ! -d "$TMUX_PLUGIN_DIR/tpm" ]; then
 fi
 
 # Fix remote URL for dotfiles
-pushd "$(~/bin/chezmoi source-path)" || exit
+pushd "$CHEZMOI_SOURCE_DIR" || exit
 git remote set-url origin git@github.com:drautb/dotfiles.git
 popd || exit
 
