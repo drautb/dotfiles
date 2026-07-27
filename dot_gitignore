@@ -35,3 +35,5 @@ hs_err_pid*.log
 
 # Godot 4
 .godot
+
+**/.claude/settings.local.json

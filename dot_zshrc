@@ -39,8 +39,12 @@ export DELTA_PAGER="less -R"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.toolbox/bin:$PATH"
-export PATH="$HOME/.rodar/bin:$PATH"
+if [ -d "$HOME/.toolbox/bin" ]; then
+  export PATH="$HOME/.toolbox/bin:$PATH"
+fi
+if [ -d "$HOME/.rodar/bin" ]; then
+  export PATH="$HOME/.rodar/bin:$PATH"
+fi
 export PATH="$HOME/bin:$PATH"
 
 if [ -d "/apollo/env/" ]; then
@@ -100,30 +104,32 @@ alias t="task"
 alias lzd="lazydocker"
 alias lzg="lazygit"
 
-# brazil aliases
-alias bb=brazil-build
-alias bba='brazil-build apollo-pkg'
-alias bre='brazil-runtime-exec'
-alias bte='brazil-test-exec'
-alias brc='brazil-recursive-cmd'
-alias bws='brazil ws'
-alias bwsuse='bws use -p'
-alias bwscreate='bws create -n'
-alias brc=brazil-recursive-cmd
-alias bbr='brc brazil-build'
-alias bball='brc --allPackages'
-alias bbb='brc --allPackages brazil-build'
-alias bbra='bbr apollo-pkg'
-alias bbca='bb clean && bba'
-alias bbcr='bb clean && bb release'
-alias bbcs='bb clean && bb server'
-alias bbrb='bws clean && brc --allPackages -- brazil-build'
+if command -v brazil-build > /dev/null 2>&1; then
+  alias bb=brazil-build
+  alias bba='brazil-build apollo-pkg'
+  alias bre='brazil-runtime-exec'
+  alias bte='brazil-test-exec'
+  alias brc='brazil-recursive-cmd'
+  alias bws='brazil ws'
+  alias bwsuse='bws use -p'
+  alias bwscreate='bws create -n'
+  alias brc=brazil-recursive-cmd
+  alias bbr='brc brazil-build'
+  alias bball='brc --allPackages'
+  alias bbb='brc --allPackages brazil-build'
+  alias bbra='bbr apollo-pkg'
+  alias bbca='bb clean && bba'
+  alias bbcr='bb clean && bb release'
+  alias bbcs='bb clean && bb server'
+  alias bbrb='bws clean && brc --allPackages -- brazil-build'
+fi
 
-# RDE aliases
-alias rwr="rde wflow run"
-alias rwp="rwr provision"
-alias rstop="rde stack stop"
-alias rshow="rde stack show"
+if command -v rde > /dev/null 2>&1; then
+  alias rwr="rde wflow run"
+  alias rwp="rwr provision"
+  alias rstop="rde stack stop"
+  alias rshow="rde stack show"
+fi
 
 if [ $(uname -s) = "Darwin" ]; then
   alias nproc="sysctl -n hw.ncpu"
@@ -146,9 +152,11 @@ gpcb() {
   git push -u origin $(gb | grep "*" | awk '{print $2}') $@
 }
 
-function mcurl() {
-  curl "$@" -L --cookie ~/.midway/cookie --cookie-jar ~/.midway/cookie
-}
+if [ -d "$HOME/.midway" ]; then
+  function mcurl() {
+    curl "$@" -L --cookie ~/.midway/cookie --cookie-jar ~/.midway/cookie
+  }
+fi
 
 # https://zenbro.github.io/2015/07/23/show-exit-code-of-last-command-in-zsh.html
 function check_last_exit_code() {
@@ -196,31 +204,36 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export AWS_EC2_METADATA_DISABLED=true
 
 
-export PATH=$HOME/.toolbox/bin:$PATH
+if command -v mise > /dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+  [ -f ~/.local/share/mise/completions.zsh ] && source ~/.local/share/mise/completions.zsh
+fi
 
-# Set up mise for runtime management
-eval "$(/home/drautb/.local/bin/mise activate zsh)"
-source ~/.local/share/mise/completions.zsh
 autoload -Uz compinit && compinit
-source /home/drautb/.brazil_completion/zsh_completion
 
-export PATH=$HOME/.toolbox/bin:$PATH
+if [ -f "$HOME/.brazil_completion/zsh_completion" ]; then
+  source "$HOME/.brazil_completion/zsh_completion"
+fi
 
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/.local/share/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/.local/share/kiro-cli/shell/zshrc.post.zsh"
 
-# Added by AIM CLI
-export PATH="/home/drautb/.aim/mcp-servers:$PATH"
+if [ -d "$HOME/.aim/mcp-servers" ]; then
+  export PATH="$HOME/.aim/mcp-servers:$PATH"
+fi
 
-# Added by AIM CLI
-export PATH="/local/home/drautb/.aim/mcp-servers:$PATH"
-
-function call_aidn() {
+if command -v aws > /dev/null 2>&1; then
+  function call_aidn() {
     echo 'Contacting AIDN GAMMA environment'
     local AIDN_VLAB_GAMMA="https://aidn-gamma-vlab.us-west-2.amazonaws.com"
     aws aidn \
         --region us-west-2 \
         --no-verify-ssl \
         --endpoint "${AIDN_VLAB_GAMMA}" "$@"
-}
+  }
+fi
+
+if command -v kinit > /dev/null 2>&1 && [ -f /etc/os-release ] && grep -q 'ID="amzn"' /etc/os-release && grep -q 'VERSION_ID="2023"' /etc/os-release; then
+  export LD_LIBRARY_PATH="/local/home/drautb/.toolbox/tools/gordian-knot/1.0.6028.0/lib:$LD_LIBRARY_PATH"
+fi
