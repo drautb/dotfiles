@@ -133,10 +133,14 @@ fi
 
 if [ $(uname -s) = "Darwin" ]; then
   alias nproc="sysctl -n hw.ncpu"
-  alias godot-3.5.2="/Applications/Godot\ 3.5.2.app/Contents/MacOS/Godot"
-  alias godot-4.0.3="/Applications/Godot\ 4.0.3.app/Contents/MacOS/Godot"
   alias c="pbcopy"
   alias p="pbpaste"
+
+  for godot_version in 3.5.2 3.5.3 4.0.3 4.2.2 4.5.1; do
+    if [ -d "/Applications/Godot ${godot_version}.app" ]; then
+      alias godot-${godot_version}="/Applications/Godot\ ${godot_version}.app/Contents/MacOS/Godot"
+    fi
+  done
 fi
 
 gcm() {
