@@ -239,5 +239,9 @@ if command -v aws > /dev/null 2>&1; then
 fi
 
 if command -v kinit > /dev/null 2>&1 && [ -f /etc/os-release ] && grep -q 'ID="amzn"' /etc/os-release && grep -q 'VERSION_ID="2023"' /etc/os-release; then
-  export LD_LIBRARY_PATH="/local/home/drautb/.toolbox/tools/gordian-knot/1.0.6028.0/lib:$LD_LIBRARY_PATH"
+  local gk_version=$(cat /local/home/drautb/.toolbox/tools/gordian-knot/info.json 2>/dev/null | grep -o '"Version":"[^"]*"' | head -1 | cut -d'"' -f4)
+  if [ -n "$gk_version" ]; then
+    export LD_LIBRARY_PATH="/local/home/drautb/.toolbox/tools/gordian-knot/${gk_version}/lib:$LD_LIBRARY_PATH"
+  fi
+  export KRB5_CONFIG="$HOME/.krb5.conf:/etc/krb5.conf"
 fi

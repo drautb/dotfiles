@@ -1,3 +1,7 @@
 README.md
 CLAUDE.md
 
+{{ if ne .osid "linux-amzn" }}
+.krb5.conf
+{{ end }}
+
