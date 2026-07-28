@@ -1,0 +1,34 @@
+sync:
+  defaults:
+    ignore:
+      vcs: false
+      paths:
+        # Git — keep each side's history independent
+        - .git
+        # Brazil / build outputs
+        - build
+        - build-private
+        # macOS
+        - .DS_Store
+        # JVM
+        - .gradle
+        - target
+        - "*.iml"
+        - .idea
+        # VS Code
+        - .vscode
+        # Node
+        - node_modules
+        # Ruby
+        - vendor/bundle
+        - .bundle
+        - tmp
+        - log
+        - coverage
+        # Python
+        - __pycache__
+        - "*.pyc"
+        - .venv
+        - venv
+        - .pytest_cache
+        - .mypy_cache
