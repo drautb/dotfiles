@@ -238,6 +238,10 @@ if command -v aws > /dev/null 2>&1; then
   }
 fi
 
+if [ -d "/run/user/$(id -u)" ]; then
+  export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+fi
+
 if command -v kinit > /dev/null 2>&1 && [ -f /etc/os-release ] && grep -q 'ID="amzn"' /etc/os-release && grep -q 'VERSION_ID="2023"' /etc/os-release; then
   local gk_version=$(cat /local/home/drautb/.toolbox/tools/gordian-knot/info.json 2>/dev/null | grep -o '"Version":"[^"]*"' | head -1 | cut -d'"' -f4)
   if [ -n "$gk_version" ]; then
