@@ -18,3 +18,12 @@ See `CLAUDE.md` for full guidelines. Key points:
 - No private keys or secrets in this repo
 - Use `$HOME` instead of hardcoded absolute paths
 - `run_once_before_*` for one-time bootstrap; `run_after_*` for idempotent per-apply tasks
+
+## Expected `chezmoi status` output
+
+The following scripts are `run_after_*` (not `run_once_after_*`) by design, so `chezmoi status` will always report them as `R` (needs re-run). This is normal — they execute on every apply and have no "done" state to track:
+
+- `40-install-vim-plugins.sh`
+- `41-install-tmux-plugins.sh`
+
+Do not treat these `R` entries as drift or attempt to "fix" them.
