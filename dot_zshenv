@@ -1,8 +1,8 @@
 . "$HOME/.cargo/env"
 
 # Odin tools
-if [ -d /apollo/env/odinTools/bin ]; then
-  export PATH="/apollo/env/odinTools/bin:$PATH"
+if [ -d /apollo/env/OdinTools/bin ]; then
+  export PATH="/apollo/env/OdinTools/bin:$PATH"
 fi
 
 # Gordian-knot Kerberos libs for MCP servers (AL2023 Chromium SSO)
