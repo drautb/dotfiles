@@ -1,5 +1,10 @@
 . "$HOME/.cargo/env"
 
+# Odin tools
+if [ -d /apollo/env/odinTools/bin ]; then
+  export PATH="/apollo/env/odinTools/bin:$PATH"
+fi
+
 # Gordian-knot Kerberos libs for MCP servers (AL2023 Chromium SSO)
 if [ -f /etc/os-release ] && grep -q 'ID="amzn"' /etc/os-release && grep -q 'VERSION_ID="2023"' /etc/os-release; then
   _gk_info="$HOME/.toolbox/tools/gordian-knot/info.json"
