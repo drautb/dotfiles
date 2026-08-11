@@ -1,0 +1,15 @@
+. "$HOME/.cargo/env"
+
+# Gordian-knot Kerberos libs for MCP servers (AL2023 Chromium SSO)
+if [ -f /etc/os-release ] && grep -q 'ID="amzn"' /etc/os-release && grep -q 'VERSION_ID="2023"' /etc/os-release; then
+  _gk_info="$HOME/.toolbox/tools/gordian-knot/info.json"
+  if [ -f "$_gk_info" ]; then
+    _gk_version=$(python3 -c "import json; print(json.load(open('$_gk_info'))['CurrentVersion']['Version'])" 2>/dev/null)
+    _gk_lib="$HOME/.toolbox/tools/gordian-knot/${_gk_version}/lib"
+    if [ -n "$_gk_version" ] && [ -d "$_gk_lib" ]; then
+      export LD_LIBRARY_PATH="${_gk_lib}:${LD_LIBRARY_PATH:-}"
+    fi
+    unset _gk_version _gk_lib
+  fi
+  unset _gk_info
+fi
