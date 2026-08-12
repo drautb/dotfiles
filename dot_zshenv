@@ -5,6 +5,11 @@ if [ -d /apollo/env/OdinTools/bin ]; then
   export PATH="/apollo/env/OdinTools/bin:$PATH"
 fi
 
+# Isengard CLI
+if [ -d /apollo/env/isengardcli/bin ]; then
+  export PATH="/apollo/env/isengardcli/bin:$PATH"
+fi
+
 # Gordian-knot Kerberos libs for MCP servers (AL2023 Chromium SSO)
 if [ -f /etc/os-release ] && grep -q 'ID="amzn"' /etc/os-release && grep -q 'VERSION_ID="2023"' /etc/os-release; then
   _gk_info="$HOME/.toolbox/tools/gordian-knot/info.json"
