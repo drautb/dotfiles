@@ -7,3 +7,4 @@ theme = iTerm2 Solarized Dark
 # Keybindings (Alt+Arrow for word navigation)
 keybind = alt+right=text:\x1bf
 keybind = alt+left=text:\x1bb
+keybind = cmd+v=paste_from_clipboard
