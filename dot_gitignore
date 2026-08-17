@@ -2,6 +2,9 @@
 .idea
 *~
 target
+.metals/
+.scala-build/
+generated/
 infer-out
 .DS_Store
 *#
