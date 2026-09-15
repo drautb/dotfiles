@@ -4,6 +4,7 @@
 target
 .metals/
 .scala-build/
+.kotlin/
 generated/
 infer-out
 .DS_Store
